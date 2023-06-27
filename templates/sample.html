@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+
+    <style>
+      body {
+        background-image: aquamarine;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+  
+  
+      .container {
+        background-color: aquamarine;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 60%;
+        text-align: center;
+      }
+      h1 {
+        color: red;
+        font-weight: 600;
+        font-size: 3.2em;
+        margin-bottom: 30px;
+      }
+      form {
+        margin-bottom: 30px;
+      }
+      .btn-success {
+        background-color: #04aa6d;
+        border-color: #04aa6d;
+        color: white;
+        border-radius: 5px;
+        width: 200px;
+        height: 50px;
+        font-weight: 600;
+        font-size: 1.2em;
+        margin-top: 20px;
+      }
+      .img-thumbnail {
+        border-radius: 10px;
+        width: 250px;
+        height: 250px;
+        margin-right: 50px;
+      }
+      h4 {
+        color: #04aa6d;
+        font-weight: 600;
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+      mark {
+        background-color: #04aa6d;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 10px;
+      }
+      .disease-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+      }
+    </style>
+    
+    {% block body %}
+      <div class="container">
+        <h1>ALZHEIMER'S DISEASE PREDICTION</h1>
+        <form class="form-inline" action="/predict" method="post" enctype="multipart/form-data">
+          <input type="file" name="file"/><br>
+          <input type="submit" class="btn btn-success" value="Predict">
+        </form>
+        <div class="disease-section">
+          <img src="{{ user_image }}" alt="User Image" class="img-thumbnail">
+          <div>
+            <h4>Disease name is <mark>{{disease}}</mark></h4>
+            <h4>Probability is : {{prob}}%</h4>
+          </div>
+        </div>
+      </div>
+      {% endblock body %}
+    

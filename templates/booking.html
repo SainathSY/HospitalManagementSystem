@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Booking
+{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  {% if current_user.usertype=="Doctor" %} 
+  {% for post in query %}
+<table class="table" >
+  <thead class="thead-light">
+    
+    <tr>
+      <th scope="col">PID </th>
+      <th scope="row">{{post.pid}}</th>
+    </tr>
+    <!--<tr> <th scope="col">PID</th>   <td>{{post.pid}}</td> </tr>-->
+    <tr> <th scope="col">EMAIL</th>   <td>{{post.email}}</td> </tr>
+    <tr> <th scope="col">NAME</th>  <td>{{post.firstname+" "+post.midname+" "+post.lastname}}</td> </tr>
+    <tr>  <th scope="col">GENDER</th>   <td>{{post.gender}}</td></tr>
+    <!--<tr> <th scope="col">SLOT</th> <td>{{post.slot}}</td> </tr>-->
+    <tr> <th scope="col">DISEASE</th>   <td>{{post.disease}}</td></tr>
+    <tr> <th scope="col">DATE</th>  <td>{{post.date}}</td></tr>
+    <tr>  <th scope="col">SLOT</th>  <td>{{post.slot}}</td></tr>
+    <tr>  <th scope="col">DEPARTMENT</th>  <td>{{dept}}</td></tr>
+    <!--<tr>   <th scope="col">PHONE NUMBER</th>  <td>{{post.number}}</td></tr>-->
+    <!--<tr>  <th scope="col">EDIT</th> <td><a href="/edit/{{post.pid}}{{post.date}}"><button class="btn btn-success">Edit </button> </a> </td></tr>
+    <tr>    <th scope="col">DELETE</th>  <td><a href="/delete/{{post.pid}}{{post.date}}"><button onclick="return confirm('Are you sure to Delete data');" class="btn btn-success">Delete </button> </a> </td></tr>
+    -->
+    {% if current_user.usertype=="Doctor" %} 
+    <form action="/presc" method="post" class="jumbotron">   
+    <tr>  <th scope="col">PRESCRIPTION</th><td><a href="presc.html"><button class="btn btn-success">Prescription</button> </a> </td> </tr>
+    </form>
+    {% endif  %}
+
+    <!--{% if current_user.usertype=="Patient" %}
+    <tr>  <th scope="col">BILL</th> <td><a href="/bill/{{post.pid}}"><button class="btn btn-success">Bill </button> </a> </td></tr>
+    {% endif %}
+    {% if current_user.usertype=="Cashier" %}
+    <tr>  <th scope="col">BILL</th> <td><a href="/bill/{{post.pid}}"><button class="btn btn-success">Bill </button> </a> </td></tr>
+    {% endif %}-->
+      
+      {% endfor %}
+    
+
+    {% elif current_user.usertype=="Patient" %} 
+
+    {% for post in query%}
+<table class="table" >
+  <thead class="thead-light">
+    
+    <tr>
+      <th scope="col">PID </th>
+      <th scope="row">{{post.pid}}</th>
+    </tr>
+    <!--<tr> <th scope="col">PID</th>   <td>{{post.pid}}</td> </tr>-->
+    <tr> <th scope="col">EMAIL</th>   <td>{{post.email}}</td> </tr>
+    <tr> <th scope="col">NAME</th>  <td>{{post.firstname+" "+post.midname+" "+post.lastname}}</td> </tr>
+    <tr>  <th scope="col">GENDER</th>   <td>{{post.gender}}</td></tr>
+    <!--<tr> <th scope="col">SLOT</th> <td>{{post.slot}}</td> </tr>-->
+    <tr> <th scope="col">DISEASE</th>   <td>{{post.disease}}</td></tr>
+    <tr> <th scope="col">DATE</th>  <td>{{post.date}}</td></tr>
+    <tr>  <th scope="col">SLOT</th>  <td>{{post.slot}}</td></tr>
+    <tr>  <th scope="col">DID</th>  <td>{{post.did}}</td></tr>
+    <!--<tr>   <th scope="col">PHONE NUMBER</th>  <td>{{post.number}}</td></tr>-->
+    <!--<tr>  <th scope="col">EDIT</th> <td><a href="/edit/{{post.pid}}{{post.date}}"><button class="btn btn-success">Edit </button> </a> </td></tr>
+    <tr>    <th scope="col">DELETE</th>  <td><a href="/delete/{{post.pid}}{{post.date}}"><button onclick="return confirm('Are you sure to Delete data');" class="btn btn-success">Delete </button> </a> </td></tr>
+    -->
+    {% if current_user.usertype=="Doctor" %} 
+    <form action="/presc" method="post" class="jumbotron">   
+    <tr>  <th scope="col">PRESCRIPTION</th><td><a href="presc.html"><button class="btn btn-success">Prescription</button> </a> </td> </tr>
+    </form>
+    {% endif  %}
+
+    <!--{% if current_user.usertype=="Patient" %}
+    <tr>  <th scope="col">BILL</th> <td><a href="/bill/{{post.pid}}"><button class="btn btn-success">Bill </button> </a> </td></tr>
+    {% endif %}
+    {% if current_user.usertype=="Cashier" %}
+    <tr>  <th scope="col">BILL</th> <td><a href="/bill/{{post.pid}}"><button class="btn btn-success">Bill </button> </a> </td></tr>
+    {% endif %}-->
+      
+      {% endfor %}
+    
+    {% endif%}  
+
+
+    
+    </tr>
+    
+  </thead>
+ 
+</table>
+
+
+{% endblock body %}

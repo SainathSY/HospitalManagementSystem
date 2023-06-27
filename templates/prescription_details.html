@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Prescription Details
+{% endblock title %}
+
+{% block body %}
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  <div class="container mt-4">
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">PID</th>
+      <th scope="col">DID</th>
+      <th scope="col">FullName</th>
+      <th scope="col">Date</th>
+      <th scope="col">MedicineName</th>
+      <th scope="col">Dosage</th>
+      <th scope="col">NoOfDays</th>
+      <th scope="col">NoteOnPatient</th>
+ 
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in posts %}
+    <tr>
+      <th scope="row">{{post.pid}}</th>
+      <td>{{post.did}}</td>
+      <td>{{firstname+" "+midname+" "+lastname}}</td>
+      <td>{{post.date}}</td>
+      <td>{{post.Medicine_Name}}</td>
+      <td>{{post.dosage}}</td>
+      <td>{{post.number_of_days}}</td>
+      <td>{{post.Note_to_patient}}</td>
+      
+
+    </tr>
+{% endfor %}
+  
+  </tbody>
+</table>
+</div>
+
+{% endblock body %}

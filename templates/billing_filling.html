@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Bill
+{% endblock title %}
+
+{% block body %}
+<script>
+  function myfunc()
+  {
+    location.replace("booking.html")
+  }
+</script>
+<div class="container mt-3">
+<div class="row">
+
+<div class="col-md-5">
+<div class="card" style="width: 18rem;">
+    <img src="static/images/doc.jpg" class="card-img-top" alt="...">
+  <br>
+  <br>
+  <img src="static/images/tab1.jfif" class="card-img-top" alt="...">
+  
+
+ 
+</div>
+
+</div>
+
+
+<div class="col-md-5">
+
+<h4 class="text-center bg-dark text-white">Bill</h4>
+<br>
+
+
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+
+<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+    {{message}}
+
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+
+
+<form action="/billing_filling" method="post" class="jumbotron" style="text-align: center;">
+
+ 
+
+  <div class="form-group" >
+
+    <input  type="pid" class="form-control" id="pid" name="pid" placeholder="pid" >
+  
+  </div>
+
+  
+<!--
+ <div class="form-group">
+
+            
+                                      
+<select class="form-control" id="gender" name="gender"  required>
+        <option selected>Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Others">Others</option>
+ 
+      </select>
+ </div>
+ -->
+<!--
+ <div class="form-group">
+
+            
+                                      
+<select class="form-control" id="slot" name="slot"  required>
+        <option selected>Slot</option>
+        <option value="morning">Morning</option>
+        <option value="evening">Evening</option>
+        <option value="night">Night</option>
+ 
+      </select>
+ </div>
+-->
+<!--
+  <div class="form-group">
+    
+    <input type="time" class="form-control" name="time" placeholder="Time" required>
+  
+  </div>
+-->
+  <div class="form-group">
+    
+    <input type="date" class="form-control" id="date" name="date" placeholder="date" >
+  
+  </div>
+  
+  <div class="form-group">
+    
+    <input type="text" class="form-control" id="Medicine_Name" name="Medicine_Name" placeholder="Medicine Name" >
+    
+  </div>
+
+  <div class="form-group">
+
+    <input type="number" class="form-control" id="price" name="price" placeholder="price" >
+  
+  </div>
+
+  <div class="form-group">
+  
+    <input type=""  class="form-control" id="quantity" name="quantity" placeholder="quantity" >
+  
+  </div>
+  <!--
+
+<div class="form-group">
+
+            
+                                      
+<select class="form-control" id="dept" name="dept"  required>
+        <option selected>Select Doctor Department</option>
+        {% for d in doct  %}
+        <option value="{{d.dept}}">{{d.dept}}</option>
+        {% endfor %}
+      </select>
+ </div>
+-->
+  
+
+
+  
+ <div class="form-group">
+
+            
+                                      
+  <select class="form-control" id="payemntstatus" name="paymentstatus"  required>
+          <option selected>Paymented Status</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        
+   
+        </select>
+   </div>
+
+
+  <div class="form-group">
+  
+  <button type="submit" id="btn1" class="btn btn-dark btn-sm btn-block" name="btn1"> Done </button>
+  
+</div>
+
+
+</form>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+{% endblock body %} 

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Nurse
+{% endblock title %}
+
+{% block body %}
+
+
+<h3 style="text-align: center;">Bed Allotment</h3>
+<div style="display: flex; justify-content: center;">
+    <form action="/nurse" method="post" class="jumbotron" style="text-align: center;" align="center">
+        <div class="form-group" align="left">
+          <input type="pid" class="form-control input-group-sm" id="pid" name="pid" placeholder="pid">
+        </div>
+
+      
+        <div class="form-group">
+
+            <label for="usertype">Select Wardtype</label>          
+                                                
+          <select class="form-control" id="usertype" name="wardtype"  required>
+                  <option selected>Select</option>
+                  <option value="General">General</option>
+                  <option value="Special">Special</option>
+                  
+                </select>
+           </div>
+
+        <div class="form-group">
+          <input type="number" class="form-control input-group-sm" id="period" name="period" placeholder="Period">
+        </div>
+        <div class="form-group">
+          <label for="usertype">Select Admitdate</label>  
+          <input type="date" class="form-control input-group-sm" id="admitdate" name="admitdate" placeholder="admitdate">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control input-group-sm" id="bed_no" name="bed_no" placeholder="bed no">
+        </div>
+        <div class="form-group">
+  
+            <button type="submit" id="btn1" class="btn btn-dark btn-sm btn-block" name="btn1">Book</button>
+            
+          </div>
+      </form>
+      
+</div>
+
+{% endblock body %} 
